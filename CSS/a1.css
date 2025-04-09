@@ -1,0 +1,29 @@
+*{
+    text-align: center;
+    color: blue;
+}
+body{
+    background-color: aqua;
+}
+h1{
+    color: rgb(255, 255, 0);
+    text-align: center;
+}      
+p{
+    font-family: monospace;
+    font-size: 60px;
+}
+.grande{
+    font-family: monospace;
+    font-size: 100px;
+}
+.mediana{
+    font-family: monospace;
+    font-size: 30px;
+}
+.color{
+    color: red;
+}
+#choco{
+    color:green;
+}

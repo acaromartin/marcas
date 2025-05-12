@@ -1,14 +1,318 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>CROMO_DESING</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Cromos Tutoz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .card-container {
+            width: 400px;
+            height: 550px;
+            position: relative;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .card-background {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+            position: absolute;
+            z-index: 1;
+        }
+        
+        .card-image {
+            width: 90%;
+            height: 250px;
+            margin: 15px auto;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
+            border: 2px solid #333;
+        }
+        
+        .card-name {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            z-index: 3;
+            text-shadow: 1px 1px 2px white;
+        }
+        
+        .card-mana {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 3;
+            display: flex;
+        }
+        
+        .star {
+            color: gold;
+            text-shadow: 1px 1px 1px black;
+            font-size: 20px;
+            margin-left: 3px;
+        }
+        
+        .card-type {
+            position: absolute;
+            bottom: 120px;
+            left: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            z-index: 3;
+        }
+        
+        .card-text {
+            position: absolute;
+            bottom: 150px;
+            left: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: #333;
+            z-index: 3;
+            background-color: rgba(255,255,255,0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .card-stats {
+            position: absolute;
+            bottom: 70px;
+            left: 20px;
+            font-size: 16px;
+            color: #333;
+            z-index: 3;
+        }
+        
+        .card-toughness {
+            position: absolute;
+            bottom: 70px;
+            right: 20px;
+            font-size: 16px;
+            color: #333;
+            z-index: 3;
+        }
+        
+        .card-artist {
+            position: absolute;
+            bottom: 40px;
+            left: 20px;
+            font-size: 12px;
+            color: #333;
+            z-index: 3;
+        }
+        
+        .card-bottom {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 12px;
+            color: #333;
+            z-index: 3;
+        }
+        
+        .controls {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        
+        .control-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
-    <div id="cromo"></div>
+    <h1>Generador de Cromos Tutoz</h1>
+    
+    <div class="card-container">
+        <div class="card-background"></div>
+        <div class="card-image"></div>
+        <div class="card-name">Nombre</div>
+        <div class="card-mana"></div>
+        <div class="card-type">Atributo</div>
+        <div class="card-text">Descripción</div>
+        <div class="card-stats">ref: 0</div>
+        <div class="card-toughness">total: 0</div>
+        <div class="card-artist">Artista</div>
+        <div class="card-bottom">N.Real</div>
+    </div>
+    
+    <div class="controls">
+        <div class="control-group">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" value="JOSE">
+        </div>
+        
+        <div class="control-group">
+            <label for="color">Color de fondo:</label>
+            <select id="color">
+                <option value="White">Blanco</option>
+                <option value="Blue">Azul</option>
+                <option value="Black">Negro</option>
+                <option value="Red">Rojo</option>
+                <option value="Green">Verde</option>
+                <option value="Gold">Dorado</option>
+            </select>
+        </div>
+        
+        <div class="control-group">
+            <label for="mana_w">Estrellas (0-6):</label>
+            <input type="number" id="mana_w" min="0" max="6" value="3">
+        </div>
+        
+        <div class="control-group">
+            <label for="picture">URL de la imagen:</label>
+            <input type="text" id="picture" value="https://magicomagico.com/tutoz/images/anonimous_clan.jpg">
+        </div>
+        
+        <div class="control-group">
+            <label for="cardtype">Atributo:</label>
+            <input type="text" id="cardtype" value="SUPER_FUERZA">
+        </div>
+        
+        <div class="control-group">
+            <label for="cardtext">Descripción:</label>
+            <input type="text" id="cardtext" value="Esto es mi description">
+        </div>
+        
+        <div class="control-group">
+            <label for="power">Referencia:</label>
+            <input type="number" id="power" value="4">
+        </div>
+        
+        <div class="control-group">
+            <label for="toughness">Total en el aula:</label>
+            <input type="number" id="toughness" value="13">
+        </div>
+        
+        <div class="control-group">
+            <label for="artist">Artista:</label>
+            <input type="text" id="artist" value="ARTISTA">
+        </div>
+        
+        <div class="control-group">
+            <label for="bottom">Nombre real:</label>
+            <input type="text" id="bottom" value="MINombreReal">
+        </div>
+    </div>
+
+    <script>
+        // Elementos del cromo
+        const cardName = document.querySelector('.card-name');
+        const cardMana = document.querySelector('.card-mana');
+        const cardImage = document.querySelector('.card-image');
+        const cardType = document.querySelector('.card-type');
+        const cardText = document.querySelector('.card-text');
+        const cardStats = document.querySelector('.card-stats');
+        const cardToughness = document.querySelector('.card-toughness');
+        const cardArtist = document.querySelector('.card-artist');
+        const cardBottom = document.querySelector('.card-bottom');
+        const cardBackground = document.querySelector('.card-background');
+        
+        // Controles
+        const nameInput = document.getElementById('name');
+        const colorInput = document.getElementById('color');
+        const manaInput = document.getElementById('mana_w');
+        const pictureInput = document.getElementById('picture');
+        const cardtypeInput = document.getElementById('cardtype');
+        const cardtextInput = document.getElementById('cardtext');
+        const powerInput = document.getElementById('power');
+        const toughnessInput = document.getElementById('toughness');
+        const artistInput = document.getElementById('artist');
+        const bottomInput = document.getElementById('bottom');
+        
+        // Función para actualizar el cromo
+        function updateCard() {
+            // Nombre
+            cardName.textContent = nameInput.value;
+            
+            // Estrellas de maná
+            cardMana.innerHTML = '';
+            const manaCount = parseInt(manaInput.value);
+            for (let i = 0; i < manaCount; i++) {
+                const star = document.createElement('span');
+                star.className = 'star';
+                star.textContent = '★';
+                cardMana.appendChild(star);
+            }
+            
+            // Color de fondo
+            const colors = {
+                'White': ['#ffffff', '#f0f0f0'],
+                'Blue': ['#aaccff', '#6688cc'],
+                'Black': ['#555555', '#333333'],
+                'Red': ['#ffaaaa', '#cc6666'],
+                'Green': ['#aaffaa', '#66cc66'],
+                'Gold': ['#ffd700', '#daa520']
+            };
+            const selectedColor = colorInput.value;
+            cardBackground.style.background = `linear-gradient(135deg, ${colors[selectedColor][0]}, ${colors[selectedColor][1]})`;
+            
+            // Imagen
+            cardImage.style.backgroundImage = `url('${pictureInput.value}')`;
+            
+            // Atributo
+            cardType.textContent = cardtypeInput.value;
+            
+            // Descripción
+            cardText.textContent = decodeURIComponent(cardtextInput.value.replace(/%20/g, ' '));
+            
+            // Referencia
+            cardStats.textContent = `ref: ${powerInput.value}`;
+            
+            // Total en el aula
+            cardToughness.textContent = `total: ${toughnessInput.value}`;
+            
+            // Artista
+            cardArtist.textContent = artistInput.value;
+            
+            // Nombre real
+            cardBottom.textContent = bottomInput.value;
+        }
+        
+        // Escuchar cambios en los inputs
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('input', updateCard);
+        });
+        
+        // Inicializar el cromo
+        updateCard();
+    </script>
 </body>
 </html>

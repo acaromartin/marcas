@@ -7,222 +7,129 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #7338ff, #f0f0f0);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            padding: 20px;
         }
         
-        .contenedor-cromo {
-            width: 400px;
-            height: 550px;
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        
-        .fondo-cromo {
-            width: 100%;
-            height: 100%;
+        .cromo {
+            width: 300px;
+            height: 450px;
             background: linear-gradient(135deg, #ffffff, #f0f0f0);
-            position: absolute;
-            z-index: 1;
-        }
-        
-        .imagen-cromo {
-            width: 90%;
-            height: 250px;
-            margin: 50px auto 15px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
+            border-radius: 5px;
             position: relative;
-            z-index: 2;
-            border: 2px solid #333;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 3px solid #333;
         }
         
-        .nombre-cromo {
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            right: 20px;
-            text-align: center;
+        .name {
             font-size: 24px;
             font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
             color: #333;
-            z-index: 3;
             text-shadow: 1px 1px 2px white;
         }
         
-        .mana-cromo {
+        .picture {
+            width: 100%;
+            height: 180px;
+            background-image: url('images/images.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            border: 3px solid #333;
+            margin-bottom: 15px;
+        }
+        
+        .estrellas {
             position: absolute;
             top: 20px;
             right: 20px;
-            z-index: 3;
             display: flex;
         }
         
-        .estrella {
+        .mana_w {
             color: gold;
-            text-shadow: 1px 1px 1px black;
             font-size: 20px;
-            margin-left: 3px;
+            text-shadow: 1px 1px 1px black;
+            margin-left: 1px;
+            margin-top: 20px;
         }
         
-        .tipo-cromo {
-            position: absolute;
-            bottom: 120px;
-            left: 20px;
+        .cardtype {
             font-size: 18px;
             font-weight: bold;
             color: #333;
-            z-index: 3;
+            margin-bottom: 10px;
         }
         
-        .texto-cromo {
-            position: absolute;
-            bottom: 150px;
-            left: 20px;
-            right: 20px;
+        .cardtext {
             font-size: 14px;
             color: #333;
-            z-index: 3;
             background-color: rgba(255,255,255,0.7);
             padding: 10px;
             border-radius: 5px;
+            margin-bottom: 15px;
         }
         
-        .estadisticas-cromo {
-            position: absolute;
-            bottom: 70px;
-            left: 20px;
+        .power {
             font-size: 16px;
             color: #333;
-            z-index: 3;
+            position: absolute;
+            bottom: 50px;
+            left: 20px;
         }
         
-        .resistencia-cromo {
-            position: absolute;
-            bottom: 70px;
-            right: 20px;
+        .toughness {
             font-size: 16px;
             color: #333;
-            z-index: 3;
-        }
-        
-        .artista-cromo {
             position: absolute;
-            bottom: 40px;
-            left: 20px;
-            font-size: 12px;
-            color: #333;
-            z-index: 3;
-        }
-        
-        .pie-cromo {
-            position: absolute;
-            bottom: 10px;
+            bottom: 50px;
             right: 20px;
+        }
+        
+        .artist {
             font-size: 12px;
             color: #333;
-            z-index: 3;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+        
+        .bottom {
+            font-size: 12px;
+            color: #333;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="contenedor-cromo">
-        <div class="fondo-cromo"></div>
-        <div class="nombre-cromo"></div>
-        <div class="imagen-cromo"></div>
-        <div class="mana-cromo"></div>
-        <div class="tipo-cromo"></div>
-        <div class="texto-cromo"></div>
-        <div class="estadisticas-cromo"></div>
-        <div class="resistencia-cromo"></div>
-        <div class="artista-cromo"></div>
-        <div class="pie-cromo"></div>
+    <div class="cromo">
+        <div class="name">ADOLPH FENT</div>
+        <div class="estrellas">
+            <span class="mana_w">★</span>
+            <span class="mana_w">★</span>
+            <span class="mana_w">★</span>
+            <span class="mana_w">★</span>
+            <span class="mana_w">★</span>
+            <span class="mana_w">★</span>
+        </div>
+        <div class="picture"></div>
+        <div class="cardtype">SUPER_FUERZA</div>
+        <div class="cardtext">Esto es mi descripción</div>
+        <div class="power">ref: 4</div>
+        <div class="toughness">total: 13</div>
+        <div class="artist">ARTISTA</div>
+        <div class="bottom">MINombreReal</div>
     </div>
-
-    <script>
-        // CONFIGURACIÓN DEL CROMO - MODIFICA ESTOS VALORES
-        const configuracionCromo = {
-            nombre: "JOSE",
-            color: "Dorado", // Blanco, Azul, Negro, Rojo, Verde, Dorado
-            estrellas: 6,     // Número de estrellas (0-6)
-            imagen: "images/images.jpg",
-            tipo: "SUPER_FUERZA",
-            descripcion: "Esto es mi descripción",
-            referencia: 4,     // Número de referencia
-            cantidad: 13,      // Número de cromos en el aula
-            artista: "ARTISTA",
-            nombreReal: "MINombreReal"
-        };
-
-        // Elementos del cromo
-        const nombreCromo = document.querySelector('.nombre-cromo');
-        const manaCromo = document.querySelector('.mana-cromo');
-        const imagenCromo = document.querySelector('.imagen-cromo');
-        const tipoCromo = document.querySelector('.tipo-cromo');
-        const textoCromo = document.querySelector('.texto-cromo');
-        const estadisticasCromo = document.querySelector('.estadisticas-cromo');
-        const resistenciaCromo = document.querySelector('.resistencia-cromo');
-        const artistaCromo = document.querySelector('.artista-cromo');
-        const pieCromo = document.querySelector('.pie-cromo');
-        const fondoCromo = document.querySelector('.fondo-cromo');
-
-        // Función para actualizar el cromo
-        function actualizarCromo() {
-            // Nombre
-            nombreCromo.textContent = configuracionCromo.nombre;
-            
-            // Estrellas de maná
-            manaCromo.innerHTML = '';
-            for (let i = 0; i < configuracionCromo.estrellas; i++) {
-                const estrella = document.createElement('span');
-                estrella.className = 'estrella';
-                estrella.textContent = '★';
-                manaCromo.appendChild(estrella);
-            }
-            
-            // Color de fondo
-            const colores = {
-                'Blanco': ['#ffffff', '#f0f0f0'],
-                'Azul': ['#aaccff', '#6688cc'],
-                'Negro': ['#555555', '#333333'],
-                'Rojo': ['#ffaaaa', '#cc6666'],
-                'Verde': ['#aaffaa', '#66cc66'],
-                'Dorado': ['#ffd700', '#daa520']
-            };
-            fondoCromo.style.background = `linear-gradient(135deg, ${colores[configuracionCromo.color][0]}, ${colores[configuracionCromo.color][1]})`;
-            
-            // Imagen
-            imagenCromo.style.backgroundImage = `url('${configuracionCromo.imagen}')`;
-            
-            // Tipo
-            tipoCromo.textContent = configuracionCromo.tipo;
-            
-            // Descripción
-            textoCromo.textContent = configuracionCromo.descripcion;
-            
-            // Referencia
-            estadisticasCromo.textContent = `ref: ${configuracionCromo.referencia}`;
-            
-            // Cantidad en el aula
-            resistenciaCromo.textContent = `total: ${configuracionCromo.cantidad}`;
-            
-            // Artista
-            artistaCromo.textContent = configuracionCromo.artista;
-            
-            // Nombre real
-            pieCromo.textContent = configuracionCromo.nombreReal;
-        }
-
-        // Inicializar el cromo
-        actualizarCromo();
-    </script>
 </body>
 </html>

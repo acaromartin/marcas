@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Cromos Tutoz</title>
+    <title>Cromo Tutoz</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            height: 100vh;
+            margin: 0;
             padding: 20px;
         }
         
-        .card-container {
+        .contenedor-cromo {
             width: 400px;
             height: 550px;
             position: relative;
-            margin-bottom: 30px;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
         
-        .card-background {
+        .fondo-cromo {
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, #ffffff, #f0f0f0);
@@ -32,10 +33,10 @@
             z-index: 1;
         }
         
-        .card-image {
+        .imagen-cromo {
             width: 90%;
             height: 250px;
-            margin: 15px auto;
+            margin: 50px auto 15px;
             background-size: cover;
             background-position: center;
             border-radius: 10px;
@@ -44,10 +45,12 @@
             border: 2px solid #333;
         }
         
-        .card-name {
+        .nombre-cromo {
             position: absolute;
-            top: 20px;
+            top: 15px;
             left: 20px;
+            right: 20px;
+            text-align: center;
             font-size: 24px;
             font-weight: bold;
             color: #333;
@@ -55,7 +58,7 @@
             text-shadow: 1px 1px 2px white;
         }
         
-        .card-mana {
+        .mana-cromo {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -63,14 +66,14 @@
             display: flex;
         }
         
-        .star {
+        .estrella {
             color: gold;
             text-shadow: 1px 1px 1px black;
             font-size: 20px;
             margin-left: 3px;
         }
         
-        .card-type {
+        .tipo-cromo {
             position: absolute;
             bottom: 120px;
             left: 20px;
@@ -80,7 +83,7 @@
             z-index: 3;
         }
         
-        .card-text {
+        .texto-cromo {
             position: absolute;
             bottom: 150px;
             left: 20px;
@@ -93,7 +96,7 @@
             border-radius: 5px;
         }
         
-        .card-stats {
+        .estadisticas-cromo {
             position: absolute;
             bottom: 70px;
             left: 20px;
@@ -102,7 +105,7 @@
             z-index: 3;
         }
         
-        .card-toughness {
+        .resistencia-cromo {
             position: absolute;
             bottom: 70px;
             right: 20px;
@@ -111,7 +114,7 @@
             z-index: 3;
         }
         
-        .card-artist {
+        .artista-cromo {
             position: absolute;
             bottom: 40px;
             left: 20px;
@@ -120,7 +123,7 @@
             z-index: 3;
         }
         
-        .card-bottom {
+        .pie-cromo {
             position: absolute;
             bottom: 10px;
             right: 20px;
@@ -128,191 +131,98 @@
             color: #333;
             z-index: 3;
         }
-        
-        .controls {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            width: 400px;
-        }
-        
-        .control-group {
-            margin-bottom: 15px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
     </style>
 </head>
 <body>
-    <h1>Generador de Cromos Tutoz</h1>
-    
-    <div class="card-container">
-        <div class="card-background"></div>
-        <div class="card-image"></div>
-        <div class="card-name">Nombre</div>
-        <div class="card-mana"></div>
-        <div class="card-type">Atributo</div>
-        <div class="card-text">Descripción</div>
-        <div class="card-stats">ref: 0</div>
-        <div class="card-toughness">total: 0</div>
-        <div class="card-artist">Artista</div>
-        <div class="card-bottom">N.Real</div>
-    </div>
-    
-    <div class="controls">
-        <div class="control-group">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" value="JOSE">
-        </div>
-        
-        <div class="control-group">
-            <label for="color">Color de fondo:</label>
-            <select id="color">
-                <option value="White">Blanco</option>
-                <option value="Blue">Azul</option>
-                <option value="Black">Negro</option>
-                <option value="Red">Rojo</option>
-                <option value="Green">Verde</option>
-                <option value="Gold">Dorado</option>
-            </select>
-        </div>
-        
-        <div class="control-group">
-            <label for="mana_w">Estrellas (0-6):</label>
-            <input type="number" id="mana_w" min="0" max="6" value="3">
-        </div>
-        
-        <div class="control-group">
-            <label for="picture">URL de la imagen:</label>
-            <input type="text" id="picture" value="https://magicomagico.com/tutoz/images/anonimous_clan.jpg">
-        </div>
-        
-        <div class="control-group">
-            <label for="cardtype">Atributo:</label>
-            <input type="text" id="cardtype" value="SUPER_FUERZA">
-        </div>
-        
-        <div class="control-group">
-            <label for="cardtext">Descripción:</label>
-            <input type="text" id="cardtext" value="Esto es mi description">
-        </div>
-        
-        <div class="control-group">
-            <label for="power">Referencia:</label>
-            <input type="number" id="power" value="4">
-        </div>
-        
-        <div class="control-group">
-            <label for="toughness">Total en el aula:</label>
-            <input type="number" id="toughness" value="13">
-        </div>
-        
-        <div class="control-group">
-            <label for="artist">Artista:</label>
-            <input type="text" id="artist" value="ARTISTA">
-        </div>
-        
-        <div class="control-group">
-            <label for="bottom">Nombre real:</label>
-            <input type="text" id="bottom" value="MINombreReal">
-        </div>
+    <div class="contenedor-cromo">
+        <div class="fondo-cromo"></div>
+        <div class="nombre-cromo"></div>
+        <div class="imagen-cromo"></div>
+        <div class="mana-cromo"></div>
+        <div class="tipo-cromo"></div>
+        <div class="texto-cromo"></div>
+        <div class="estadisticas-cromo"></div>
+        <div class="resistencia-cromo"></div>
+        <div class="artista-cromo"></div>
+        <div class="pie-cromo"></div>
     </div>
 
     <script>
+        // CONFIGURACIÓN DEL CROMO - MODIFICA ESTOS VALORES
+        const configuracionCromo = {
+            nombre: "JOSE",
+            color: "Dorado", // Blanco, Azul, Negro, Rojo, Verde, Dorado
+            estrellas: 6,     // Número de estrellas (0-6)
+            imagen: "images/images.jpg",
+            tipo: "SUPER_FUERZA",
+            descripcion: "Esto es mi descripción",
+            referencia: 4,     // Número de referencia
+            cantidad: 13,      // Número de cromos en el aula
+            artista: "ARTISTA",
+            nombreReal: "MINombreReal"
+        };
+
         // Elementos del cromo
-        const cardName = document.querySelector('.card-name');
-        const cardMana = document.querySelector('.card-mana');
-        const cardImage = document.querySelector('.card-image');
-        const cardType = document.querySelector('.card-type');
-        const cardText = document.querySelector('.card-text');
-        const cardStats = document.querySelector('.card-stats');
-        const cardToughness = document.querySelector('.card-toughness');
-        const cardArtist = document.querySelector('.card-artist');
-        const cardBottom = document.querySelector('.card-bottom');
-        const cardBackground = document.querySelector('.card-background');
-        
-        // Controles
-        const nameInput = document.getElementById('name');
-        const colorInput = document.getElementById('color');
-        const manaInput = document.getElementById('mana_w');
-        const pictureInput = document.getElementById('picture');
-        const cardtypeInput = document.getElementById('cardtype');
-        const cardtextInput = document.getElementById('cardtext');
-        const powerInput = document.getElementById('power');
-        const toughnessInput = document.getElementById('toughness');
-        const artistInput = document.getElementById('artist');
-        const bottomInput = document.getElementById('bottom');
-        
+        const nombreCromo = document.querySelector('.nombre-cromo');
+        const manaCromo = document.querySelector('.mana-cromo');
+        const imagenCromo = document.querySelector('.imagen-cromo');
+        const tipoCromo = document.querySelector('.tipo-cromo');
+        const textoCromo = document.querySelector('.texto-cromo');
+        const estadisticasCromo = document.querySelector('.estadisticas-cromo');
+        const resistenciaCromo = document.querySelector('.resistencia-cromo');
+        const artistaCromo = document.querySelector('.artista-cromo');
+        const pieCromo = document.querySelector('.pie-cromo');
+        const fondoCromo = document.querySelector('.fondo-cromo');
+
         // Función para actualizar el cromo
-        function updateCard() {
+        function actualizarCromo() {
             // Nombre
-            cardName.textContent = nameInput.value;
+            nombreCromo.textContent = configuracionCromo.nombre;
             
             // Estrellas de maná
-            cardMana.innerHTML = '';
-            const manaCount = parseInt(manaInput.value);
-            for (let i = 0; i < manaCount; i++) {
-                const star = document.createElement('span');
-                star.className = 'star';
-                star.textContent = '★';
-                cardMana.appendChild(star);
+            manaCromo.innerHTML = '';
+            for (let i = 0; i < configuracionCromo.estrellas; i++) {
+                const estrella = document.createElement('span');
+                estrella.className = 'estrella';
+                estrella.textContent = '★';
+                manaCromo.appendChild(estrella);
             }
             
             // Color de fondo
-            const colors = {
-                'White': ['#ffffff', '#f0f0f0'],
-                'Blue': ['#aaccff', '#6688cc'],
-                'Black': ['#555555', '#333333'],
-                'Red': ['#ffaaaa', '#cc6666'],
-                'Green': ['#aaffaa', '#66cc66'],
-                'Gold': ['#ffd700', '#daa520']
+            const colores = {
+                'Blanco': ['#ffffff', '#f0f0f0'],
+                'Azul': ['#aaccff', '#6688cc'],
+                'Negro': ['#555555', '#333333'],
+                'Rojo': ['#ffaaaa', '#cc6666'],
+                'Verde': ['#aaffaa', '#66cc66'],
+                'Dorado': ['#ffd700', '#daa520']
             };
-            const selectedColor = colorInput.value;
-            cardBackground.style.background = `linear-gradient(135deg, ${colors[selectedColor][0]}, ${colors[selectedColor][1]})`;
+            fondoCromo.style.background = `linear-gradient(135deg, ${colores[configuracionCromo.color][0]}, ${colores[configuracionCromo.color][1]})`;
             
             // Imagen
-            cardImage.style.backgroundImage = `url('${pictureInput.value}')`;
+            imagenCromo.style.backgroundImage = `url('${configuracionCromo.imagen}')`;
             
-            // Atributo
-            cardType.textContent = cardtypeInput.value;
+            // Tipo
+            tipoCromo.textContent = configuracionCromo.tipo;
             
             // Descripción
-            cardText.textContent = decodeURIComponent(cardtextInput.value.replace(/%20/g, ' '));
+            textoCromo.textContent = configuracionCromo.descripcion;
             
             // Referencia
-            cardStats.textContent = `ref: ${powerInput.value}`;
+            estadisticasCromo.textContent = `ref: ${configuracionCromo.referencia}`;
             
-            // Total en el aula
-            cardToughness.textContent = `total: ${toughnessInput.value}`;
+            // Cantidad en el aula
+            resistenciaCromo.textContent = `total: ${configuracionCromo.cantidad}`;
             
             // Artista
-            cardArtist.textContent = artistInput.value;
+            artistaCromo.textContent = configuracionCromo.artista;
             
             // Nombre real
-            cardBottom.textContent = bottomInput.value;
+            pieCromo.textContent = configuracionCromo.nombreReal;
         }
-        
-        // Escuchar cambios en los inputs
-        const inputs = document.querySelectorAll('input, select');
-        inputs.forEach(input => {
-            input.addEventListener('input', updateCard);
-        });
-        
+
         // Inicializar el cromo
-        updateCard();
+        actualizarCromo();
     </script>
 </body>
 </html>

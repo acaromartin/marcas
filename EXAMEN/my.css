@@ -3,7 +3,7 @@ body{
     margin: 0;
 }
 .contenedor{
-    background-color: rgb(255, 246, 125);
+    background-color: rgb(183, 255, 125);
 }
 button {
     display: flex;

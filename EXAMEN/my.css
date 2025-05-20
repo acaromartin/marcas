@@ -1,0 +1,39 @@
+body{
+    background-color: green;
+    margin: 0;
+}
+.contenedor{
+    background-color: rgb(255, 246, 125);
+}
+button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+h1{
+    font-family:sans-serif;
+}
+.nose{
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    max-width: 10%;
+    margin: 10px auto;
+    margin-left: 3%;
+
+}
+.botones{
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+}
+.name1{
+    min-width: 100%;
+}
+img{
+    display: flex;
+    margin: auto 80%;
+    margin-top: -10%;
+    width: 10%;
+    height: 10%
+}

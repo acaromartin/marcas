@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>EXA_EVA3_MARCAS</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='my.css'>
+    <script src='utilidades.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+         function alert(){
+        Swal.fire("Warning");
+        }
+        function cargarDatos(){
+            let name1 = setValue("sName1", getValue("sName1"));
+            let name2 = setValue("sName2", getValue("sName2"));
+            let name3 = setValue("sName3", getValue("sName3"));
+            let name4 = setValue("sName4", getValue("sName4"));
+            let date1 = setValue("sDate1", getValue("sDate1"));
+            let date2 = setValue("sDate2", getValue("sDate2"));
+        }
+    </script>
+</head>
+<body onload="cargarDatos()">
+    <script>
+      
+    </script>
+    <div class="contenedor">
+    <h1>Floating Goldfinch</h1>
+    <form action="resultado.html">
+        <h3>hola</h3>
+        <div>
+            <label>name</label>
+            <input type="text" name="sName1">
+        </div>  
+        <div>
+            <label>name</label>
+            <input type="text" name="sName2">
+        </div>
+        <div>
+            <label>name</label>
+            <input type="text" name="sName3">
+        </div>
+        <div>
+            <label>name</label>
+            <input type="text" name="sName4">
+        </div>
+
+    </form>
+    <form action="resultado.html">
+        <div>
+            <label>date</label>
+            <input type="date" name="sDate1">
+        </div>  
+        <div>
+            <label>date</label>
+            <input type="date" name="sDate2">
+        </div>
+    </form>
+    <div class="nose">
+        cp
+    </div>
+    <div class="nose">
+        cp
+    </div>
+    <div class="nose">
+        cp
+    </div>
+    <div class="nose">
+        cp
+    </div>
+    <button>
+        1
+    </button>
+
+    <button>
+        2
+    </button>
+
+    
+    <button onclick="alert()">
+        
+     3
+       
+    </button>
+
+    <button>
+        4
+    </button>
+
+    <button>
+        5
+    </button>
+</div>
+</body>
+</html>
